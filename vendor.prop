@@ -253,7 +253,7 @@ persist.vendor.hvdcp_opti.disallowed=1
 ro.hardware.keystore_desede=true
 
 # Media
-debug.stagefright.ccodec=4
+debug.stagefright.ccodec=1
 debug.stagefright.omx_default_rank=0
 
 # NFC
