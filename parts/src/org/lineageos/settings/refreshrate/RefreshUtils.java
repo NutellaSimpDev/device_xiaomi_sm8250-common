@@ -89,20 +89,20 @@ public final class RefreshUtils {
 
         switch (mode) {
             case STATE_STANDARD:
-                modes[1] = modes[1] + packageName + ",";
+                modes[0] = modes[0] + packageName + ",";
                 break;
             case STATE_MID:
-                modes[2] = modes[2] + packageName + ",";
+                modes[1] = modes[1] + packageName + ",";
                 break; 
             case STATE_EXTREME:
-                modes[3] = modes[3] + packageName + ",";
+                modes[2] = modes[2] + packageName + ",";
                 break; 
             case STATE_MAXIMUM:
-                modes[4] = modes[4] + packageName + ",";
+                modes[3] = modes[3] + packageName + ",";
                 break;
         }
 
-        finalString = modes[0] + ":" + modes[1] + ":" + modes[2] + ":" + modes[3] + ":" + modes[4];
+        finalString = modes[0] + ":" + modes[1] + ":" + modes[2] + ":" + modes[3];
 
         writeValue(finalString);
     }
@@ -111,13 +111,13 @@ public final class RefreshUtils {
         String value = getValue();
         String[] modes = value.split(":");
         int state = STATE_DEFAULT;
-        if (modes[1].contains(packageName + ",")) {
+        if (modes[0].contains(packageName + ",")) {
             state = STATE_STANDARD;
-        } else if (modes[2].contains(packageName + ",")) {
+        } else if (modes[1].contains(packageName + ",")) {
             state = STATE_MID;    
-        } else if (modes[3].contains(packageName + ",")) {
+        } else if (modes[2].contains(packageName + ",")) {
             state = STATE_EXTREME;
-        } else if (modes[4].contains(packageName + ",")) {
+        } else if (modes[3].contains(packageName + ",")) {
             state = STATE_MAXIMUM;
         }
         return state;
@@ -133,25 +133,25 @@ public final class RefreshUtils {
         if (value != null) {
             modes = value.split(":");
 
-            if (modes[1].contains(packageName + ",")) {
+            if (modes[0].contains(packageName + ",")) {
                 maxrate = REFRESH_STATE_STANDARD;
                 if (minrate > maxrate) {
                     minrate = maxrate;
                 }
                 isAppInList = true;
-            } else if (modes[2].contains(packageName + ",")) {
+            } else if (modes[1].contains(packageName + ",")) {
                 maxrate = REFRESH_STATE_MID;
                 if (minrate > maxrate) {
                     minrate = maxrate;
                 }
                 isAppInList = true;
-            } else if (modes[3].contains(packageName + ",")) {
+            } else if (modes[2].contains(packageName + ",")) {
                 maxrate = REFRESH_STATE_EXTREME;
                 if (minrate > maxrate) {
                     minrate = maxrate;
                 }
                 isAppInList = true;
-            } else if (modes[4].contains(packageName + ",")) {
+            } else if (modes[3].contains(packageName + ",")) {
                 maxrate = REFRESH_STATE_MAXIMUM;
                 if (minrate > maxrate) {
                     minrate = maxrate;
